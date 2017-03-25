@@ -12,4 +12,9 @@ Things to keep in mind:
 * I am a single person.
 * What I'm looking for right now is FLOW and EXPERIENCE bugs. The writing and art is nowhere near complete, nor is the music. I want to know if you hit any bugs or crashes.
 
+
+To download a demo, click on the .zip file, then in the right-hand corner, click "download". Then, unzip, click on the anime girl icon, and have at it.
+
+If you're here to collaborate or anything else, ask me personally for further instructions.
+
 Thank you very much.
