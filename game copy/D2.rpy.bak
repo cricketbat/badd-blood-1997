@@ -1,0 +1,149 @@
+label Day2:
+
+    $ shawn_match = False
+    $ taker_match = False
+
+    scene black with dissolve
+    "..."
+    scene bg hotel day with dissolve
+    "...I didn't sleep that well last night."
+    play music music_morning fadein 1.0
+    window hide
+    call calendar(1)
+    window show
+    "I guess it's to be expected."
+    "I fell asleep pretty much instantly, but kept waking up through the night."
+    "Ultimately, when I finally got up, it felt like I hadn't really slept at all."
+
+
+
+
+
+    "Since my last promotion from stagehand to lower level match manager, I hadn't really been able to ride the buses with the crew."
+    "You lose permission to sit near expensive equipment when you're not supposed to be there, after all."
+    "I used to always ride with fellow stagehands, but since then, I'd just gotten on the rental car grind."
+    "I don't have many manager friends. Jamie, I guess, is an exception."
+    "But even then, they were with the higher level managers, anyway."
+    "I've mentioned it before, but WWF is so seniority-based that it's honestly rude to be upset about how badly newcomers get treated."
+    "And even though I haven't been a newcomer for years, I'm still new."
+    "But, whatever."
+    "This is starting to get a little too self-pity-ish."
+    "I'm used to the routine by now."
+    "The next city is four hours from here."
+    "From cloudy Albany, New York to slightly less cloudy Rochester, New York."
+    "My bags are packed, my wrist is wrapped, and my cassettes are ready."
+    "Let's do this!"
+    stop music fadeout 1.0
+
+    scene black with Dissolve(1.5)
+    play sound "assets/sfx/car.mp3"
+    $ renpy.pause (1.0)
+    scene bg stage setup with Dissolve(1.5)
+    play music music_fretless
+
+    "New arena, same old setup."
+    "I arrive with more than enough time for the house show, and by the looks of it, I'm still kind of early."
+    "Everyone who needs to be here just kind of gets here on their own time, aside from crew, of course."
+    "As long as you're out for your match, then no one really cares."
+    "At least house shows are more relaxed than their televised counterparts."
+    "Yesterday was a bit much, so I'd reaaaaally love it if we didn't have a repeat."
+
+    scene bg hallway with fade
+    "Another upside to house shows is that Vince always lists the matches beforehand, so there's no element of surprise."
+    "He doesn't have anything to gain from changing match plans on the fly, so he usually decides them the night before, or even the day of."
+    "What this means for everyone is a more stable night, and a more relaxed ride home."
+    "I head over to the bulletin board to find the match listing for the night."
+    "It's near catering, as always."
+    play sound "assets/sfx/10_paper.mp3"
+    "Let's see here..."
+    centered "{font=assets/fonts/TrashHand.ttf}{size=+30}MATCH LISTINGS FOR 9/30/1997{/size}{/font}"
+    play sound "assets/sfx/10_paper.mp3"
+    centered "{font=assets/fonts/TrashHand.ttf}{size=+10}Hunter Hearst Helmsley VS. Rockabilly{p}...{p}Shawn Michaels VS. Ken Shamrock{/size}{/font}"
+    play sound "assets/sfx/10_paper.mp3"
+    centered "{font=assets/fonts/TrashHand.ttf}{size=+10}...{p}The Undertaker VS. Goldust{/size}{/font}"
+    "Oh, thank God."
+    "Those two are stressful enough alone, I definitely don't need them fighting each other before the Pay-Per-View."
+
+
+
+
+
+#Match To Watch
+    menu:
+        "Shawn's":
+            $ dx_points += 1
+            $ shawn_match = True
+        "The Undertaker's":
+            $ taker_points += 1
+            $ taker_match = True
+        "Neither" if persistent.shawn_end == True and persistent.hunter_end == True and persistent.chyna_end == True and persistent.taker_end == True:
+            $ kane_points += 1
+
+    if shawn_match == True:
+        "It's time to watch Shawn's match."
+
+    if shawn_match == False and taker_match == False:
+        "Taker's match is about to start, but I opted out."
+
+    "Shawn, Hunter, and Chyna all left before the main event was over."
+    "Taker came backstage."
+
+    if taker_match == True:
+        "I watched his match."
+    if taker_match == False:
+        "I didn't watch his match."
+
+    "I ask Taker if he is doing alright. He replies."
+    "I ask him if he is in any pain. He replies."
+
+    if taker_match == False:
+        "The conversation ends here."
+    if taker_match == True:
+        "I mention the glitter in his hair."
+
+
+
+
+
+#Staying Late
+    menu:
+        "Stay behind":
+            $ taker_points += 1
+            "I stay behind."
+            t "Aren't you afraid of the dark?"
+            me "No."
+            t "You should be."
+
+        "Just leave":
+            $ dx_points += 1
+            "I will go home."
+
+        "Look around first" if persistent.shawn_end == True and persistent.hunter_end == True and persistent.chyna_end == True and persistent.taker_end == True:
+            $ kane_points += 1
+            "There is a spooky broken lock."
+
+
+
+
+
+#Point Check
+
+    j "How are things?"
+
+    if dx_points >=3:
+        me "DX does suck."
+
+    elif taker_points >=3:
+        me "It's hard to talk to Taker."
+
+    else:
+        "Things are hard and spooky."
+
+
+
+    return
+
+
+
+
+
